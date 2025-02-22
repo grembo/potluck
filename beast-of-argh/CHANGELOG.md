@@ -1,7 +1,22 @@
+0.26
+
+* Version bump for new base image
+
+---
+
+0.25
+
+* Version bump for new base image
+
+---
+
 0.24
 
 * Version bump for new base image
 * Update for rsync security issue
+* Update dashboards to match updates to Grafana image
+* Add quotes to PATH where applicable for shellcheck error
+* Revert dashboard changes for some dashboard because not working with grafana from pkg sources yet
 
 ---
 

@@ -1,3 +1,17 @@
+1.28
+
+* Version bump for new base image
+
+---
+
+1.27
+
+* Version bump for new base image
+* Quote PATH statements
+* Fix consul labels and set IP parameters, set 127.0.0.1 only for consul client_addr
+
+---
+
 1.26
 
 * Version bump for new base image

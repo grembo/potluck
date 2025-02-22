@@ -1,3 +1,16 @@
+2.25
+
+* Version bump for new base image
+
+---
+
+2.24
+
+* Version bump for new base image
+* Fix consul labels and set IP parameters
+
+---
+
 2.23
 
 * Version bump for new base image

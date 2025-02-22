@@ -1,3 +1,18 @@
+0.24
+
+* Version bump for new base image
+
+---
+
+0.23
+
+* Version bump for new base image
+* Add quotes to PATH to fix shellcheck complaint
+* Add scripts to check certificate validity and send alerts via alertmanager
+* Include note in alerts that this image automatically renews certificates
+
+---
+
 0.22
 
 * Version bump for new base image

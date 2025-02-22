@@ -1,3 +1,19 @@
+0.3
+
+* Version bump for new base image
+
+---
+
+0.2
+
+* Version bump for new base image
+* Quote PATH statements
+* Add certificate expiry check with alerts to alertmanager
+* Netbox v4.1.11
+* Fix consul labels and set IP parameters
+
+---
+
 0.1
 
 * Version bump for new base image

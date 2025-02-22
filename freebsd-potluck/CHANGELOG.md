@@ -1,3 +1,15 @@
+0.0.36
+
+* Version bump freebsd SSH update
+
+---
+
+0.0.35
+
+* Version bump for pkg 2 and freebsd updates
+
+---
+
 0.0.34
 
 * Version bump for rsync update

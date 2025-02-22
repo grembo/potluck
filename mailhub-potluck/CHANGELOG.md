@@ -1,3 +1,16 @@
+0.22
+
+* Version bump for new base image
+
+---
+
+0.21
+
+* Version bump for new base image
+* Add certificate expiry notices to alertmanager host
+
+---
+
 0.20
 
 * Version bump for new base image

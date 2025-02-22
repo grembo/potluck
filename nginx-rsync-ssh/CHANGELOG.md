@@ -1,3 +1,17 @@
+0.25
+
+* Version bump for new base image
+
+---
+
+0.24
+
+* Version bump for new base image
+* Quote PATH statements
+* Fix consul labels and set IP parameters
+
+---
+
 0.23
 
 * Version bump for new base image

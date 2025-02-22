@@ -9,7 +9,7 @@ set -e
 # shellcheck disable=SC3040
 set -o pipefail
 
-export PATH=/usr/local/bin:$PATH
+export PATH="/usr/local/bin:$PATH"
 
 SCRIPT=$(readlink -f "$0")
 TEMPLATEPATH=$(dirname "$SCRIPT")/../templates
@@ -24,32 +24,32 @@ chmod 750 /usr/local/etc/consul.d
 # safe(r) separator for sed
 sep=$'\001'
 
-# temporary removal HCL consul as not starting
-#< "$TEMPLATEPATH/consul-agent.hcl.in" \
-#  sed "s${sep}%%datacenter%%${sep}$DATACENTER${sep}g" | \
-#  sed "s${sep}%%nodename%%${sep}$NODENAME${sep}g" | \
-#  sed "s${sep}%%ip%%${sep}$IP${sep}g" | \
-#  sed "s${sep}%%consulservers%%${sep}$FIXCONSULSERVERS${sep}g" \
-#  > /usr/local/etc/consul.d/agent.hcl
-#
-#chmod 600 \
-#  /usr/local/etc/consul.d/agent.hcl
-#
-#echo "s${sep}%%gossipkey%%${sep}$GOSSIPKEY${sep}" | sed -i '' -f - \
-#  /usr/local/etc/consul.d/agent.hcl
+# attempt with hcl config again
+< "$TEMPLATEPATH/consul-agent.hcl.in" \
+ sed "s${sep}%%datacenter%%${sep}$DATACENTER${sep}g" | \
+ sed "s${sep}%%nodename%%${sep}$NODENAME${sep}g" | \
+ sed "s${sep}%%ip%%${sep}$IP${sep}g" | \
+ sed "s${sep}%%consulservers%%${sep}$FIXCONSULSERVERS${sep}g" \
+ > /usr/local/etc/consul.d/agent.hcl
 
-# temporary replacement with json config
-< "$TEMPLATEPATH/consul-agent.json.in" \
-  sed "s${sep}%%datacenter%%${sep}$DATACENTER${sep}g" | \
-  sed "s${sep}%%nodename%%${sep}$NODENAME${sep}g" | \
-  sed "s${sep}%%ip%%${sep}$IP${sep}g" | \
-  sed "s${sep}%%consulservers%%${sep}$FIXCONSULSERVERS${sep}g" \
-  > /usr/local/etc/consul.d/agent.json
-
-chmod 600 /usr/local/etc/consul.d/agent.json
+chmod 600 /usr/local/etc/consul.d/agent.hcl
 
 echo "s${sep}%%gossipkey%%${sep}$GOSSIPKEY${sep}" | sed -i '' -f - \
-  /usr/local/etc/consul.d/agent.json
+ /usr/local/etc/consul.d/agent.hcl
+
+# disabled
+# # temporary replacement with json config
+# < "$TEMPLATEPATH/consul-agent.json.in" \
+#   sed "s${sep}%%datacenter%%${sep}$DATACENTER${sep}g" | \
+#   sed "s${sep}%%nodename%%${sep}$NODENAME${sep}g" | \
+#   sed "s${sep}%%ip%%${sep}$IP${sep}g" | \
+#   sed "s${sep}%%consulservers%%${sep}$FIXCONSULSERVERS${sep}g" \
+#   > /usr/local/etc/consul.d/agent.json
+
+# chmod 600 /usr/local/etc/consul.d/agent.json
+
+# echo "s${sep}%%gossipkey%%${sep}$GOSSIPKEY${sep}" | sed -i '' -f - \
+#   /usr/local/etc/consul.d/agent.json
 
 # set owner and perms on _directory_ /usr/local/etc/consul.d with agent.hcl
 chown -R consul:wheel /usr/local/etc/consul.d/
@@ -57,9 +57,9 @@ chown -R consul:wheel /usr/local/etc/consul.d/
 # enable consul
 service consul enable || true
 
-# set load parameter for consul config
-#sysrc consul_args="-config-file=/usr/local/etc/consul.d/agent.hcl"
-sysrc consul_args="-config-file=/usr/local/etc/consul.d/agent.json"
+# set load parameter for consul config, back to HCL format
+sysrc consul_args="-config-file=/usr/local/etc/consul.d/agent.hcl"
+#sysrc consul_args="-config-file=/usr/local/etc/consul.d/agent.json"
 sysrc consul_syslog_output_priority="warn"
 #sysrc consul_datadir="/var/db/consul"
 #sysrc consul_group="wheel"

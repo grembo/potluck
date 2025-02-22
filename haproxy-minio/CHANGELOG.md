@@ -1,3 +1,17 @@
+0.13
+
+* Version bump for new base image
+
+---
+
+0.12
+
+* Version bump for new base image
+* Quote PATH statements
+* Fix error in CHECKLIST.md
+
+---
+
 0.11
 
 * Version bump for new base image
