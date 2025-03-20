@@ -1,3 +1,18 @@
+0.119
+
+* Version bump for rebuild
+* Add post-install scripts for admin automation
+* Update README with version adjustment and postinstall script
+
+---
+
+0.118
+
+* Version bump for new image
+* Update README for *.config.php to remove trailing commas from final item in arrays
+
+---
+
 0.117
 
 * Version bump for new image

@@ -1,3 +1,17 @@
+2.10
+
+* Make Nomad proxy setup as an optional script
+
+---
+
+2.9
+
+* Add Nomad proxy
+* Allow Nomad PKI to issue server certs for nomad.service.consul
+* Allow Consul and Vault servers to request Nomad client certs
+
+---
+
 2.8
 
 * Version bump for new base image

@@ -1,3 +1,15 @@
+0.9
+
+* Make Nomad proxy setup as an optional script
+
+---
+
+0.8
+
+* Add Nomad proxy
+
+---
+
 0.7
 
 * Version bump for new base image

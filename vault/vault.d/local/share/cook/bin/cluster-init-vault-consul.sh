@@ -114,6 +114,7 @@ timeout --foreground 60 \
 echo "s${sep}%%consultoken%%${sep}$VAULT_SERVICE_TOKEN${sep}g" |
   sed -i '' -f - /usr/local/etc/vault.hcl
 
+echo "Start nodemetricsproxy"
 timeout --foreground 120 \
   sh -c 'while ! service nginx status nodemetricsproxy; do
     service nginx start nodemetricsproxy || true; sleep 3;
